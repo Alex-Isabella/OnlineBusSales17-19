@@ -23,10 +23,21 @@ ALTER TABLE Product_Sales RENAME COLUMN 'Gross Sales' TO 'Total_Net_Sales';
 Analyze
 
 Now we can start with some real analysis
-#1 Top 3 Product Type that sold the most in gross sales?
+#1 Top 3 Product Types by Total Net Sales?
+#1 Top 3 Product Types by Total Gross Sales?
+#1 Top 3 Product Types by Total Quantity Sold?
 
 
-~~~#1~~~
+
+   ~~~#1~~~
+
+#1 Top 3 Product Types by Total Net Sales?
+
+
+
+
+
+   ~~~2~~~
 
 
 Top 3 Product Type that sold the most in gross sales?
@@ -43,7 +54,5 @@ Product_Type      Total_Gross_Sales   Total_Net_Sales
 Basket            143815.5            3427.2
 Art & Sculpture   90316.6             12732
 Jewelry           31048               1516.83
-
-~~~#2~~~
 
 
