@@ -37,6 +37,14 @@ Questions Answered;
 
 #1 Top 3 Product Types by Total Net Sales?
 
+SELECT Product_Type
+    ,ROUND(SUM(Total_Net_Sales), 2) as Total_Net_Produt_Type_Sales
+    FROM Product_Sales 
+    GROUP BY Product_Type
+    ORDER BY Total_Net_Produt_Type_Sales DESC
+    LIMIT 3;
+
+
 Product_Type       Total_Net_Produt_Type_Sales
 Basket             134791.39
 Art & Sculpture    84480.85
@@ -56,9 +64,17 @@ SELECT Product_Type
     ORDER BY Total_Gross_Sales DESC
     LIMIT 3;
 
+
 Product_Type      Total_Gross_Sales   Total_Net_Sales
 Basket            143815.5            3427.2
 Art & Sculpture   90316.6             12732
 Jewelry           31048               1516.83
 
 
+~~~#3~~~
+
+
+Product_Type     Total_Net_Quantity
+Basket           1461
+Art & Sculpture  1427
+Jewelry          991
