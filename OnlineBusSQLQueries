@@ -71,7 +71,7 @@ Art & Sculpture   90316.6             12732
 Jewelry           31048               1516.83
 
 
-~~~#3~~~
+   ~~~#3~~~
 
 SELECT Product_Type
     ,SUM(Net_Quantity) as Total_Net_Quantity
