@@ -23,13 +23,13 @@ ALTER TABLE Product_Sales RENAME COLUMN 'Gross Sales' TO 'Total_Net_Sales';
 Analyze
 
 Now we can start with some real analysis
-#1 What Product Type sold the most in gross sales?
+#1 Top 3 Product Type that sold the most in gross sales?
 
 
 ~~~#1~~~
 
 
-What Product Type sold the most in gross sales?
+Top 3 Product Type that sold the most in gross sales?
 
 SELECT Product_Type
     ,SUM(Gross_Sales) as Total_Gross_Sales
@@ -37,11 +37,12 @@ SELECT Product_Type
     FROM Product_Sales 
     GROUP BY Product_Type
     ORDER BY Total_Gross_Sales DESC
-    LIMIT 1;
+    LIMIT 3;
 
-Product_Type	Total_Gross_Sales	 Total_Net_Sales
-Basket	      143815.5	         3427.2
-
+Product_Type      Total_Gross_Sales   Total_Net_Sales
+Basket            143815.5            3427.2
+Art & Sculpture   90316.6             12732
+Jewelry           31048               1516.83
 
 ~~~#2~~~
 
