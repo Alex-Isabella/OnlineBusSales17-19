@@ -73,6 +73,13 @@ Jewelry           31048               1516.83
 
 ~~~#3~~~
 
+SELECT Product_Type
+    ,SUM(Net_Quantity) as Total_Net_Quantity
+    FROM Product_Sales 
+    GROUP BY Product_Type
+    ORDER BY Total_Net_Quantity DESC
+    LIMIT 3;
+
 
 Product_Type     Total_Net_Quantity
 Basket           1461
