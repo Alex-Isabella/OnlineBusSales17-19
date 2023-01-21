@@ -1,0 +1,48 @@
+Cleaning/Analyzing/Reporting Data from an online ecommerce store downloaded from Kaggle
+
+Clean It Up
+
+Table Name; Product_Sales
+Column Names; Product Type, Net Quantity, Gross Sales, Discounts, Returns, Total Net Sales
+
+The first thing I Had to do was rename all the columns and replace the " " with "_"
+
+ALTER TABLE Product_Sales RENAME COLUMN 'Product Type' TO 'Product_Type'
+
+Refresh the database and do a simple check
+
+SELECT *
+   FROM Product_Sales
+   
+Everything looks good time for the other columns
+
+ALTER TABLE Product_Sales RENAME COLUMN 'Net Quantity' TO 'Net_Quantity';
+ALTER TABLE Product_Sales RENAME COLUMN 'Gross Sales' TO 'Gross_Sales';
+ALTER TABLE Product_Sales RENAME COLUMN 'Gross Sales' TO 'Total_Net_Sales';
+
+Analyze
+
+Now we can start with some real analysis
+#1 What Product Type sold the most in gross sales?
+
+
+~~~#1~~~
+
+
+What Product Type sold the most in gross sales?
+
+SELECT Product_Type
+    ,SUM(Gross_Sales) as Total_Gross_Sales
+    ,Total_Net_Sales
+    FROM Product_Sales 
+    GROUP BY Product_Type
+    ORDER BY Total_Gross_Sales DESC
+    LIMIT 1;
+
+Product_Type	Total_Gross_Sales	 Total_Net_Sales
+Basket	      143815.5	         3427.2
+
+
+~~~#2~~~
+
+
