@@ -107,13 +107,15 @@ Jewelry          991
 SELECT Product_Type
     ,Total_Net_Quantity
     ,Total_Net_Product_Type_Sales
-    ,(Total_Net_Product_Type_Sales / Total_Net_Quantity) AS Net_Sale_Per_Product
-FROM(
-SELECT Product_Type
-    ,SUM(Net_Quantity) AS Total_Net_Quantity
-    ,SUM(Total_Net_Sales) AS Total_Net_Product_Type_Sales
-    FROM Product_Sales 
-    GROUP BY Product_Type) T
+    ,ROUND((Total_Net_Product_Type_Sales / Total_Net_Quantity), 2) AS Net_Sale_Per_Product
+    FROM(
+        SELECT Product_Type
+            ,SUM(Net_Quantity) AS Total_Net_Quantity
+            ,ROUND(SUM(Total_Net_Sales), 2) AS Total_Net_Product_Type_Sales
+            FROM Product_Sales 
+            WHERE Product_Type <> ''
+            GROUP BY Product_Type) 
+            P
     ORDER BY Net_Sale_Per_Product DESC
     LIMIT 3;
 
