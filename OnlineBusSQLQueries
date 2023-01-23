@@ -30,8 +30,8 @@ Questions Answered;
 #2 Top 3 Product Types by Total Gross Sales?
 #3 Top 3 Product Types by Total Quantity Sold?
 #4 Top 3 Product Types by Net Sales Per Product Sold
-#5 Highest Average Priced Product Type
-#6 
+#5 Top 3 Product Types by Highest Average Priced Product
+#6 Top 3 Highest Returned Product Type
 #7 
 #8 
 #9 
@@ -129,7 +129,7 @@ Furniture       27                  1864.96                       69.07
 ~~~#5~~~
 
 
-#5 Top 3 Product Category by Average Price Per Product Sold
+#5 Top 3 Product Types by Highest Average Priced Product
 
 
 SELECT Product_Type
@@ -154,3 +154,21 @@ Basket         1461                 143815.5           98.44
 Furniture      27                   2034               75.33
 
 
+
+~~~#6~~~
+
+
+#6 Top 3 Highest Returned Product Type
+
+SELECT Product_Type
+    ,ROUND(SUM(Returns), 2) AS Total_Returned
+    FROM Product_Sales
+    WHERE Product_Type <> ''
+    GROUP BY Product_Type 
+    ORDER BY Total_Returned
+    LIMIT 3;
+
+Product_Type       Total_Returned
+Basket             -4439.69
+Art & Sculpture    -2879.93
+Christmas          -670
