@@ -29,8 +29,8 @@ Questions Answered;
 #1 Top 3 Product Types by Total Net Sales?
 #2 Top 3 Product Types by Total Gross Sales?
 #3 Top 3 Product Types by Total Quantity Sold?
-#4 Top 3 Product Category by Net Sales Per Product Sold
-#5 
+#4 Top 3 Product Types by Net Sales Per Product Sold
+#5 Highest Average Priced Product Type
 #6 
 #7 
 #8 
@@ -101,7 +101,7 @@ Jewelry          991
 ~~~#4~~~
 
 
-#4 Top 3 Product Category by Net Sales Per Product Sold
+#4 Top 3 Product Category by Net Sale Per Product
 
 
 SELECT Product_Type
@@ -124,3 +124,33 @@ Product_Type    Total_Net_Quantity  Total_Net_Product_Type_Sales  Net_Sale_Per_P
 One-of-a-Kind   12                  2108.01                       175.67
 Basket          1461                134791.39                     92.26
 Furniture       27                  1864.96                       69.07
+
+
+~~~#5~~~
+
+
+#5 Top 3 Product Category by Average Price Per Product Sold
+
+
+SELECT Product_Type
+    ,Total_Net_Quantity
+    ,Total_Gross_Sales
+    ,ROUND((Total_Gross_Sales / Total_Net_Quantity), 2) AS Avg_Price_Per_Product
+    FROM(
+        SELECT Product_Type
+            ,SUM(Net_Quantity) AS Total_Net_Quantity
+            ,ROUND(SUM(Gross_Sales), 2) AS Total_Gross_Sales
+            FROM Product_Sales 
+            WHERE Product_Type <> ''
+            GROUP BY Product_Type) 
+            P
+    ORDER BY Avg_Price_Per_Product DESC
+    LIMIT 3;
+    
+
+Product_Type   Total_Net_Quantity   Total_Gross_Sales  Avg_Price_Per_Product
+One-of-a-Kind  12                   2180               181.67
+Basket         1461                 143815.5           98.44
+Furniture      27                   2034               75.33
+
+
