@@ -33,11 +33,7 @@ Questions Answered;
 #5 Top 3 Product Types by Highest Average Priced Product
 #6 Top 3 Highest Returned Product Type
 #7 Top 3 Discounted Product Types By Total Percent Discounted
-#8 
-#9 
-#10 
-#11 
-#12 
+#8 Top 3 Discounted Product Types By Total Amount Discounted
 
 
    ~~~#1~~~
@@ -213,3 +209,5 @@ Product_Type      Total_Gross_Sales  Total_Discount_Amount. Total_Percent_Discou
 Basket            143815.5           -4584.42               -3.19
 Art & Sculpture   90316.6            -2955.82               -3.27
 Home Decor        27114.55           -991.21                -3.66
+
+
