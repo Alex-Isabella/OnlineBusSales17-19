@@ -16,8 +16,8 @@ Questions Answered
 #4 Top 3 Months Overall by Total Monlthy Orders
 #5 Top 3 Months with highest returns
 #6 Top 3 Months Overall with Highest Total Monthly Returns
-#7 
-#8 
+#7 Yearly Total Gross_Sales, Net_Sales and Total_Sales
+#8 Yearly Total Orders, Shipping
 #9 
 #10 
 
@@ -118,3 +118,75 @@ Month       Total_Monthly_Orders
 December    622
 November    503
 June        277 
+
+
+~~~#5~~~~
+
+
+#5 Top 3 Months with highest returns
+
+SELECT Month
+    ,Year
+    ,Returns
+    FROM Sales_Data
+    ORDER BY CAST(Returns AS FLOAT)
+    LIMIT 3
+    
+Month    Year    Returns
+October  2019   -1572.55
+June     2018   -1506.53
+May      2018   -1448.02
+
+
+
+~~~~#6~~~~
+
+
+#6 Top 3 Months Overall with Highest Total Monthly Returns
+
+SELECT Month
+    ,ROUND(SUM(Returns), 2) AS Total_Monthly_Returns
+    FROM Sales_Data
+    GROUP BY Month
+    ORDER BY Total_Monthly_Returns
+    LIMIT 3;
+
+Month       Total_Monthly_Returns
+December   -2653.73
+October    -2172.3
+July       -2067.93
+
+
+~~~#7~~~
+
+
+#7 Yearly Total Gross_Sales, Net_Sales and Total_Sales
+
+
+SELECT Year
+    ,ROUND(SUM(Gross_Sales), 2) AS Total_Yearly_Gross_Sales
+    ,ROUND(SUM(Net_Sales), 2) AS Total_Yearly_Net_Sales
+    ,ROUND(SUM(Total_Sales), 2) AS Total_Yearly_Sales
+    FROM Sales_Data
+    GROUP BY Year;
+    
+    
+Year    Total_Yearly_Gross_Sales  Total_Yearly_Net_Sales   Total_Yearly_Sales
+2017    97342.05                  91520.5                  103497.27
+2018    113313.15                 104788.18                123568.28
+2019    143762.15                 129796.4                 155900.33
+
+
+~~~#8~~~
+
+
+SELECT Year
+    ,ROUND(SUM(Total_Orders), 2) AS Total_Yearly_Orders
+    FROM Sales_Data
+    GROUP BY Year;
+
+
+Year    Total_Yearly_Orders  Total_Yearly_Shipping
+2017    836                  11976.77
+2018    1141                 18780.1
+2019    1520                 26101.23
