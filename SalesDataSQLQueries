@@ -11,7 +11,7 @@ ALTER TABLE Sales_Data RENAME COLUMN 'Total Sales' TO 'Total_Sales';
 Questions Answered
 
 #1 Best Performing Month Per Year
-#2 
+#2 Top 3 Best Perfroming Months Overall
 #3 
 #4 
 #5 
@@ -62,3 +62,25 @@ SELECT Month
     
 Month     Year  Gross_Sales
 December  2019  31183.9
+
+
+~~~#2~~~
+
+
+SELECT Month
+    ,ROUND(SUM(Gross_Sales), 2) AS Total_Monthly_Sales
+    FROM Sales_Data
+    GROUP BY Month
+    ORDER BY Total_Monthly_Sales DESC
+    LIMIT 3;
+
+
+Month       Total_Monthly_Sales
+December    55223.45
+November    49025.6
+June        30204.05
+
+
+~~~#3~~~
+
+
