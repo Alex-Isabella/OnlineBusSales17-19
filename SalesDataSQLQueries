@@ -18,12 +18,11 @@ Questions Answered
 #6 Top 3 Months Overall with Highest Total Monthly Returns
 #7 Yearly Total Gross_Sales, Net_Sales and Total_Sales
 #8 Yearly Total Orders, Shipping
-#9 
-#10 
 
 
 ~~~#1~~~
 
+#1 Best Performing Month Per Year by Gross Sale
 
 SELECT Month
     ,Year
@@ -66,6 +65,8 @@ December  2019  31183.9
 
 ~~~#2~~~
 
+
+#2 Top 3 Best Performing Months Overall by Gross Sale
 
 SELECT Month
     ,ROUND(SUM(Gross_Sales), 2) AS Total_Monthly_Sales
@@ -179,6 +180,8 @@ Year    Total_Yearly_Gross_Sales  Total_Yearly_Net_Sales   Total_Yearly_Sales
 
 ~~~#8~~~
 
+
+#8 Yearly Total Orders, Shipping
 
 SELECT Year
     ,ROUND(SUM(Total_Orders), 2) AS Total_Yearly_Orders
