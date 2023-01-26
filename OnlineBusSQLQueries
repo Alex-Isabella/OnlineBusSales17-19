@@ -197,4 +197,19 @@ Textiles       1889               -112.9                 -5.98
 ~~~#8~~~
 
 
+#8 Top 3 Discounted Product Types By Total Amount Discounted
 
+SELECT Product_Type
+    ,ROUND(SUM(Gross_Sales), 2) AS Total_Gross_Sales
+    ,ROUND(SUM(Discounts), 2) AS Total_Discount_Amount
+    ,ROUND((SUM(Discounts)/SUM(Gross_Sales)*100), 2) AS Total_Percent_Discounted
+    FROM Product_Sales
+    WHERE Product_Type <> ''
+    GROUP BY Product_Type
+    ORDER BY Total_Discount_Amount
+    LIMIT 3;
+    
+Product_Type      Total_Gross_Sales  Total_Discount_Amount. Total_Percent_Discounted
+Basket            143815.5           -4584.42               -3.19
+Art & Sculpture   90316.6            -2955.82               -3.27
+Home Decor        27114.55           -991.21                -3.66
