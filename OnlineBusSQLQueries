@@ -32,7 +32,7 @@ Questions Answered;
 #4 Top 3 Product Types by Net Sales Per Product Sold
 #5 Top 3 Product Types by Highest Average Priced Product
 #6 Top 3 Highest Returned Product Type
-#7 
+#7 Top 3 Discounted Product Types By Total Percent Discounted
 #8 
 #9 
 #10 
@@ -171,3 +171,30 @@ Product_Type       Total_Returned
 Basket             -4439.69
 Art & Sculpture    -2879.93
 Christmas          -670
+
+
+~~~#7~~~
+
+
+#7 Top 3 Discounted Product Types By Total Percent Discounted
+
+
+SELECT Product_Type
+    ,ROUND(SUM(Gross_Sales), 2) AS Total_Gross_Sales
+    ,ROUND(SUM(Discounts), 2) AS Total_Discount_Amount
+    ,ROUND((SUM(Discounts)/SUM(Gross_Sales)*100), 2) AS Total_Percent_Discounted
+    FROM Product_Sales
+    WHERE Product_Type <> ''
+    GROUP BY Product_Type
+    ORDER BY Total_Percent_Discounted;
+    
+Product_Type   Total_Gross_Sales  Total_Discount_Amount  Total_Percent_Discounted
+Easter         38                 -3.8                   -10
+Furniture      2034               -169.04                -8.31
+Textiles       1889               -112.9                 -5.98
+
+
+~~~#8~~~
+
+
+
