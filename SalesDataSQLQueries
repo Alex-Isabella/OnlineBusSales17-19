@@ -10,12 +10,12 @@ ALTER TABLE Sales_Data RENAME COLUMN 'Total Sales' TO 'Total_Sales';
 
 Questions Answered
 
-#1 Best Performing Month Per Year
-#2 Top 3 Best Perfroming Months Overall
-#3 
-#4 
-#5 
-#6 
+#1 Best Performing Month Per Year by Gross Sale
+#2 Top 3 Best Performing Months Overall by Gross Sale
+#3 Top 3 Months by most Orders
+#4 Top 3 Months Overall by Total Monlthy Orders
+#5 Top 3 Months with highest returns
+#6 Top 3 Months Overall with Highest Total Monthly Returns
 #7 
 #8 
 #9 
@@ -84,3 +84,37 @@ June        30204.05
 ~~~#3~~~
 
 
+#3 Top 3 Months by most Orders
+
+
+SELECT Month
+    ,Year
+    ,Total_Orders
+    FROM Sales_Data
+    ORDER BY CAST(Total_Orders AS FLOAT) DESC
+    LIMIT 3
+    
+ 
+Month       Year	Total_Orders
+December    2019    342
+November    2019    272
+December    2018    164
+
+
+~~~~#4~~~~
+
+#4Top 3 Months Overall by Total Monlthy Orders
+
+
+SELECT Month
+    ,ROUND(SUM(Total_Orders), 2) AS Total_Monthly_Orders
+    FROM Sales_Data
+    GROUP BY Month
+    ORDER BY Total_Monthly_Orders DESC
+    LIMIT 3;
+    
+    
+Month       Total_Monthly_Orders
+December    622
+November    503
+June        277 
