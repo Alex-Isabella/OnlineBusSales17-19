@@ -1,0 +1,64 @@
+Similar to the Product Data I have to do a little data cleaning
+
+Change all column names that need to replace " " with "_"
+
+ALTER TABLE Sales_Data RENAME COLUMN 'Total Orders' TO 'Total_Orders'
+ALTER TABLE Sales_Data RENAME COLUMN 'Gross Sales' TO 'Gross_Sales';
+ALTER TABLE Sales_Data RENAME COLUMN 'Net Sales' TO 'Net_Sales';
+ALTER TABLE Sales_Data RENAME COLUMN 'Total Sales' TO 'Total_Sales';
+
+
+Questions Answered
+
+#1 Best Performing Month Per Year
+#2 
+#3 
+#4 
+#5 
+#6 
+#7 
+#8 
+#9 
+#10 
+
+
+~~~#1~~~
+
+
+SELECT Month
+    ,Year
+    ,Gross_Sales
+    FROM Sales_Data
+    WHERE Year = '2017'
+    GROUP BY Month
+    ORDER BY CAST(Gross_Sales AS FLOAT) DESC;
+    
+    
+Month     Year  Gross_Sales
+November  2017  13025
+
+
+SELECT Month
+    ,Year
+    ,Gross_Sales
+    FROM Sales_Data
+    WHERE Year = '2018'
+    GROUP BY Month
+    ORDER BY CAST(Gross_Sales AS FLOAT) DESC;
+
+
+Month     Year  Gross_Sales
+December  2018  13683.5
+
+    
+SELECT Month
+    ,Year
+    ,Gross_Sales
+    FROM Sales_Data
+    WHERE Year = '2019'
+    GROUP BY Month
+    ORDER BY CAST(Gross_Sales AS FLOAT) DESC;
+    
+    
+Month     Year  Gross_Sales
+December  2019  31183.9
